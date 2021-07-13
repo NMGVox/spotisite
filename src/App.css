@@ -3,18 +3,63 @@
 }
 
 .App-logo {
-  height: 41vmin;
+  height: 30vmin;
   pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+    animation: App-logo-spin infinite 8s steps(1, end);
   }
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  .Encaseblck{
+    animation-name: slideinDiv;
+    animation-duration: 3s;
+  }
+}
+
+.but {
+  font-size: 125%;
+  text-align: center;
+  padding: 10px;
+  border: 5px;
+  border-color: black;
+  border-radius: 12px;
+  display: inline-block;
+  cursor: pointer;
+  margin: 10px 10px;
+  color: white;
+  -webkit-text-stroke: 1px rgba(17, 68, 1, 0.445);
+}
+
+.flvtext {
+  word-wrap: break-word;
+  width: 400px;
+  -webkit-text-stroke: 2px rgba(17, 71, 0, 0.692);
+}
+
+.Encaseblck {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 20px 20px;
+  border-radius: 12px;
+  justify-content: center;
+  display:block;
+  overflow-y: hidden;
+}
+
+.butblck {
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 20px 20px;
+  border-radius: 12px;
+  justify-content: center;
+}
+
 .App-header {
-  background-color: #282c34;
+  background: rgb(107,75,154);
+  background: linear-gradient(180deg, rgba(41,41,41,1) 45%, rgba(0,54,3,1) 100%);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -28,12 +73,26 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
+
+@keyframes slideinDiv {
   from {
-    transform: rotate(0deg);
+    transform: translate(0%, 50%);
+    overflow-y: hidden;
   }
+
   to {
-    transform: rotate(360deg);
+    transform: translate(0%, 0);
+    overflow-y: hidden;
+  }
+}
+
+
+@keyframes App-logo-spin {
+  0% {
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scaleX(-1);
   }
 }
 
