@@ -54,6 +54,9 @@
   margin: 10px 10px;
   color: white;
   -webkit-text-stroke: 1px rgba(17, 68, 1, 0.445);
+  border:solid;
+  border-width: 2px;
+  border-color: whitesmoke;
 }
 
 .flvtext {
@@ -61,6 +64,34 @@
   width: 400px;
   -webkit-text-stroke: 2px rgba(17, 71, 0, 0.692);
 }
+
+.EncaseblckCred2 {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  padding: 10px 6px;
+  justify-content: center;
+  display: block;
+}
+
+.txtfld{
+  background-color: rgb(80, 79, 79);
+  border-radius:5px;
+  color:whitesmoke;
+}
+
+.EncaseblckCred1 {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 20px 10px;
+  border-radius: 12px;
+  justify-content: center;
+  overflow: hidden;
+  position: absolute;
+  display: block;
+  width: 180px;
+  left: 27%;
+  top: 72%;
+}
+
 
 .Encaseblck {
   background-color: rgba(0, 0, 0, 0.2);
