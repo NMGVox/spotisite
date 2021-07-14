@@ -8,7 +8,11 @@ function App() {
   
   return (
     <div className="App">
-      <header className="App-header">
+      <header className="rootHead">
+        <h1 className="rootTitle"> Spotisite!</h1>
+      </header>
+
+      <div className="App-header">
       <h1>Welcome {guest}!</h1>
       <div className= "Encaseblck">
         <img src={logo} className="App-logo" alt="logo" />
@@ -26,7 +30,7 @@ function App() {
                   text = "No account? Register!"/>
           </div>
         </div>
-      </header>
+      </div>
     </div>
   );
 }
