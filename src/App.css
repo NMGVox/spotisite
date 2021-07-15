@@ -86,7 +86,7 @@
   overflow: hidden;
   position: absolute;
   display: block;
-  width: 180px;
+  width: 25vh;
   left: 20%;
   top: 72%;
   overflow-y: hidden;
@@ -127,6 +127,7 @@
   justify-content: center;
   display:block;
   overflow-y: hidden;
+  width: 53vh;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -142,6 +143,7 @@
   padding: 20px 20px;
   border-radius: 12px;
   justify-content: center;
+  width: 48vh;
 }
 
 @keyframes slideinDiv {

@@ -3,6 +3,7 @@ import logo from '../d5.gif';
 import Login from  './Login.js'
 import Register from  './Register.js'
 import {  useState } from 'react'
+import { useAuth } from '../Context/Authcontext'
 
 const Body = () => {
   const [showLogin, setShowLogin] = useState(false)  
@@ -18,11 +19,11 @@ const Body = () => {
     showLogin ? setShowLogin(!showLogin) : setShowLogin(showLogin)
   }
 
-    const guest = "Guest"
+    const {  currentUser }  = useAuth()
     return (
         <div>
           <div className="App-header">
-          <h1 className = "Welcome">Welcome {guest}!</h1>
+          <h1 className = "Welcome">Welcome {currentUser ? currentUser.email :"guest!"}</h1>
           <div className= "Encaseblck">
             <img src={logo} className="App-logo" alt="logo" />
             <h3 className="flvtext">

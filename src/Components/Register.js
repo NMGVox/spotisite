@@ -1,15 +1,57 @@
+import React, { useRef, useState } from 'react'
+import { useAuth } from '../Context/Authcontext'
+
 const Register = ( { color, fs } ) => {
+    const userRef = useRef()
+    const emailRef = useRef()
+    const confemailRef = useRef()
+    const passRef = useRef()
+    const confpassRef = useRef()
+    const {  signup, currentUser  } = useAuth()
+    const [error, setError] = useState('')
+    const [loading, setLoading] = useState(false)
+
+    async function handleSubmit(e) {
+        e.preventDefault()
+
+        if (passRef.current.value !== confpassRef.current.value){
+            return setError("Passwords don't match.")
+        }
+        
+        if (emailRef.current.value !== confemailRef.current.value){
+            return setError("Emails don't match.")
+        }
+        
+        try{
+            setError('')
+            setLoading(true)
+            await signup(emailRef.current.value, passRef.current.value)
+        } catch(error){
+            setError("Failed to create an account.")
+            console.log(error)
+        }
+        setLoading(false)
+    }
+
     return (
         <div>
             <div style= {{'left': '66%', 'top': '62%'}} className = "EncaseblckCred1">
-            <form className = "EncaseblckCred2">
-                <input className = "txtfld" type="text" placeholder="Enter Username Ex. DezVox"></input>
-                <input className = "txtfld" type="text" placeholder="Enter Email"></input>
-                <input className = "txtfld" type="text" placeholder="Confirm Email"></input>
-                <input className = "txtfld" type="password" placeholder="Enter Password"></input>
-                <input className = "txtfld" type="password" placeholder="Confirm Password"></input>
+            {error && <p style={{'color': 'red', 'fontSize' : '10px'}}>{error}</p>}
+            <form onSubmit={handleSubmit} className = "EncaseblckCred2">
+                <fieldset id = "usernameReg">
+                    <input ref= { userRef } className = "txtfld" type="text" required placeholder="Enter Username Ex. DezVox"></input>
+                </fieldset>
+                <fieldset id= "email-confirm">
+                    <input ref= { emailRef } className = "txtfld" type="text" required placeholder="Enter Email"></input>
+                    <input ref= { confemailRef } className = "txtfld" type="text" required placeholder="Confirm Email"></input>
+                </fieldset>
+                <fieldset id="password-confirm">
+                    <input ref= { passRef } className = "txtfld" type="password" required placeholder="Enter Password"></input>
+                    <input ref= { confpassRef } className = "txtfld" type="password" required placeholder="Confirm Password"></input>
+                </fieldset>
                 <input className = "but" type="submit" value="Register!" 
                         style = {{'background':color, fontSize: fs}}
+                        disabled={loading}
                 >
                 </input>
             </form>
