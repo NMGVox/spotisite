@@ -1,7 +1,6 @@
 import './App.css';
-import Button from './Components/Button.js'
 import { Link } from 'react-router-dom'
-import Body from './Components/body.js'
+import Body from './Components/Body.js'
 
 function App() {
   return (

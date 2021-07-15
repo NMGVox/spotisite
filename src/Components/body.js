@@ -1,19 +1,28 @@
-import React from 'react'
-import PropTypes from 'prop-types'
 import Button from './Button.js'
 import logo from '../d5.gif';
 import Login from  './Login.js'
+import Register from  './Register.js'
+import {  useState } from 'react'
 
-const body = () => {
-    const onClick = () => {
-        console.log("You clicked me!")
+const Body = () => {
+  const [showLogin, setShowLogin] = useState(false)  
+  const[showReg, setShowReg] = useState(false)
+
+  const onClickLog = () => {
+      setShowLogin(!showLogin)
+      showReg ? setShowReg(!showReg) : setShowReg(showReg)
     }
+  
+  const onClickReg = () => {
+    setShowReg(!showReg)
+    showLogin ? setShowLogin(!showLogin) : setShowLogin(showLogin)
+  }
 
     const guest = "Guest"
     return (
         <div>
           <div className="App-header">
-          <h1>Welcome {guest}!</h1>
+          <h1 className = "Welcome">Welcome {guest}!</h1>
           <div className= "Encaseblck">
             <img src={logo} className="App-logo" alt="logo" />
             <h3 className="flvtext">
@@ -21,23 +30,28 @@ const body = () => {
             </h3>
             <div className= "butblck">
               <Button color = 'linear-gradient(90deg, rgba(0,54,3,1) 45%, rgba(41,41,41,1) 100%)'
-                      onClick={onClick}
+                      onClick={onClickLog}
                       fs = '85%' 
                       className= "Logb" 
-                      text = "Login!"
+                      text = {showLogin ? "Nevermind" : "Log in!"}
               />
               <Button color = 'linear-gradient(90deg, rgba(41,41,41,1) 45%, rgba(0,54,3,1) 100%)' 
+                      onClick={onClickReg}
                       fs = "75%"
-                      text = "No account? Register!"/>
+                      text = {showReg ? "Nevermind!": "No account? Register!"}/>
               </div>
-              
             </div>
           </div>
-          <Login color = 'linear-gradient(90deg, rgba(0,54,3,1) 45%, rgba(41,41,41,1) 100%)'
-                 fs = '80%'
-          />
+          <div>
+            {showLogin && <Login color = 'linear-gradient(90deg, rgba(0,54,3,1) 45%, rgba(41,41,41,1) 100%)'
+                  fs = '80%'
+            />}
+            {showReg && <Register color = 'linear-gradient(90deg, rgba(41,41,41,1) 45%, rgba(0,54,3,1) 100%)'
+                  fs= '80%'
+            />}
+          </div>
         </div>
     )
 }
 
-export default body
+export default Body
