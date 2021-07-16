@@ -23,7 +23,7 @@ const Body = () => {
     return (
         <div>
           <div className="App-header">
-          <h1 className = "Welcome">Welcome {currentUser ? currentUser.email :"guest!"}</h1>
+          <h1 className = "Welcome">Welcome {currentUser ? currentUser.email.split('@')[0] :"guest"}!</h1>
           <div className= "Encaseblck">
             <img src={logo} className="App-logo" alt="logo" />
             <h3 className="flvtext">

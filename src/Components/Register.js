@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react'
 import { useAuth } from '../Context/Authcontext'
+import {  useHistory } from 'react-router-dom'
 
 const Register = ( { color, fs } ) => {
     const userRef = useRef()
@@ -7,9 +8,11 @@ const Register = ( { color, fs } ) => {
     const confemailRef = useRef()
     const passRef = useRef()
     const confpassRef = useRef()
-    const {  signup, currentUser  } = useAuth()
+    const {  signup  } = useAuth()
     const [error, setError] = useState('')
     const [loading, setLoading] = useState(false)
+
+    const history = useHistory()
 
     async function handleSubmit(e) {
         e.preventDefault()
@@ -26,6 +29,7 @@ const Register = ( { color, fs } ) => {
             setError('')
             setLoading(true)
             await signup(emailRef.current.value, passRef.current.value)
+            history.push('/dashboard')
         } catch(error){
             setError("Failed to create an account.")
             console.log(error)

@@ -1,18 +1,25 @@
 import './App.css';
-import { Link } from 'react-router-dom'
-import Body from './Components/Body.js'
+import Body from './Components/body.js'
 import { AuthProvider } from './Context/Authcontext';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import Dashboard from './Components/Dashboard.js'
+import Privateroute from './Components/Privateroute';
 
 function App() {
   return (
-    <AuthProvider>
       <div className="App">
         <header className="rootHead">
           <h1 className="rootTitle"> Spotisite!</h1>
         </header>
-        <Body />
+        <AuthProvider>
+          <Router>
+            <Switch>
+              <Privateroute exact path="/dashboard" component = { Dashboard }/>
+              <Route exact path="/" component = { Body }/>
+            </Switch>
+          </Router>
+        </AuthProvider>
       </div>
-    </AuthProvider>
   );
 }
 
