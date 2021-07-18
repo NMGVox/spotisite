@@ -4,14 +4,13 @@ import { AuthProvider } from './Context/Authcontext';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Dashboard from './Components/Dashboard.js'
 import Privateroute from './Components/Privateroute';
+import SiteToolbar from './Components/Sitetoolbar.js' 
 
 function App() {
   return (
       <div className="App">
-        <header className="rootHead">
-          <h1 className="rootTitle"> Spotisite!</h1>
-        </header>
         <AuthProvider>
+          <SiteToolbar />
           <Router>
             <Switch>
               <Privateroute exact path="/dashboard" component = { Dashboard }/>

@@ -1,7 +1,10 @@
+import { useAuth } from '../Context/Authcontext'
+
 const Dashboard = () => {
+    const { currentUser } = useAuth()
     return (
         <div>
-            Ya made it!
+            Ya made, {currentUser ? currentUser.email.split('@')[0] :"guest"}!
         </div>
     )
 }

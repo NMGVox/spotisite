@@ -67,8 +67,9 @@
 .rootTitle {
   color:whitesmoke;
   font:italic;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin-top: 30px;
+  font-family:'Open Sans', sans-serif;
+  margin-top: 15px;
+  text-align: center;
   font-size: 32px;
   -webkit-text-stroke: 1px rgb(0, 0, 0);
 }/*Used for top toolbar*/
@@ -83,13 +84,12 @@
   padding: 20px 10px;
   border-radius: 12px;
   justify-content: center;
-  overflow: hidden;
   position: absolute;
   display: block;
   width: 25vh;
   left: 20%;
   top: 72%;
-  overflow-y: hidden;
+  overflow: hidden;
 }
 
 .EncaseblckCred2 {
@@ -98,7 +98,6 @@
   padding: 10px 6px;
   justify-content: center;
   display: block;
-  overflow-y: hidden;
 }
 
 .txtfld{
@@ -125,7 +124,7 @@
   padding: 20px 20px;
   border-radius: 12px;
   justify-content: center;
-  display:block;
+  display: block;
   overflow-y: hidden;
   width: 53vh;
 }
