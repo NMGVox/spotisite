@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react'
 import { useAuth } from '../Context/Authcontext'
 import {  useHistory } from 'react-router-dom'
+import firebase, {  auth  } from '../firebase'
+
 
 const Register = ( { color, fs } ) => {
     {/* Variables to keep track of user input. */}
@@ -31,6 +33,14 @@ const Register = ( { color, fs } ) => {
             setError('')
             setLoading(true)
             await signup(emailRef.current.value, passRef.current.value)
+
+            var uid = auth.currentUser.uid
+            
+            firebase.database().ref('users').child(uid).set({
+                username : userRef.current.value, 
+            })
+
+            console.log(uid)
             history.push('/dashboard')
         } catch(error){
             {/*Failed? Set an error, and display more info in the console. (for dev purposes).*/}

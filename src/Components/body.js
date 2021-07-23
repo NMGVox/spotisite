@@ -2,13 +2,15 @@ import Button from './Button.js'
 import logo from '../d5.gif';
 import Login from  './Login.js'
 import Register from  './Register.js'
-import {  useState } from 'react'
-import { useAuth } from '../Context/Authcontext'
+import {  useState, useEffect } from 'react'
+import  { useAuth } from '../Context/Authcontext'
+import firebase from '../firebase'
 import { Link } from 'react-router-dom'
 
 const Body = () => {
   const [showLogin, setShowLogin] = useState(false)  
   const[showReg, setShowReg] = useState(false)
+  const[username, setUsername] = useState("")
 
   {/*Once the log in button is clicked, display the login div and hide the registration div if it is visible*/}
   const onClickLog = () => {
@@ -20,6 +22,20 @@ const Body = () => {
     setShowReg(!showReg)
     showLogin ? setShowLogin(!showLogin) : setShowLogin(showLogin)
   }
+  
+  useEffect(() => {
+    const getUsername = async() =>{
+      await firebase.database().ref('users/' + currentUser.uid + '/username').on(
+        'value', (snapshot) => {
+          const data = snapshot.val();
+          setUsername(data)
+        }
+      )
+    }
+    currentUser && getUsername()
+  }, [])
+
+
     {/*Get current user details from AuthContext */}
     const {  currentUser }  = useAuth()
     
@@ -27,7 +43,7 @@ const Body = () => {
         <div>
           <div className="App-header">
             {/*Landing Page */}
-          <h1 className = "Welcome">Welcome {currentUser ? currentUser.email.split('@')[0] :"guest"}!</h1>
+          <h1 className = "Welcome">Welcome {currentUser ? username :"guest"}!</h1>
           <div className= "Encaseblck">
             <img src={logo} className="App-logo" alt="logo" />
             
